@@ -41,7 +41,7 @@
             return false;
         }
         if (!field.regex.test(val)) {
-            showError(field, 'Número inválido. Ej: +58 412 000 0000');
+            showError(field, 'Número inválido. Ej: +51 929 756 344');
             return false;
         }
         clearError(field);

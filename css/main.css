@@ -15,32 +15,44 @@
   --gold: #d4547a;
   /* hot/deep pink (accent) */
   --gold-light: #e87a9a;
-  /* medium hot pink        */
-  --mauve: #c47088;
-  /* palo rosa / dusty rose */
-  --blush: #f2b8c6;
-  /* soft blush             */
-  --dark: #1c1218;
-  /* warm dark background   */
-  --dark-2: #271921;
-  /* slightly lighter dark  */
-  --dark-3: #321f28;
-  /* card dark              */
-  --white: #fff5f7;
-  --glass: rgba(255, 200, 215, 0.08);
-  --glass-border: rgba(255, 180, 200, 0.22);
-  --glass-deep: rgba(28, 18, 24, 0.5);
-  --shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
-  --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.35);
-  --radius: 16px;
-  --radius-sm: 10px;
-  --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Dynamic Palette (Light Mode Default) */
+  --dark: #0f0f0f;
+  --dark-2: #141414;
+  --dark-3: #1a1a1a;
+  --white: #fafafa;
+  --primary: #d4547a;
+  /* Palo Rosa */
+  --primary-light: #f9c6d0;
+  --gold: #c5a059;
+  --gold-light: #e0c28d;
+  --glass: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
 
-  --font-heading: 'Playfair Display', Georgia, serif;
-  --font-body: 'Outfit', system-ui, sans-serif;
+  /* Semantic Aliases */
+  --bg-color: var(--dark);
+  --bg-alt: var(--dark-2);
+  --text-color: var(--white);
+  --text-muted: rgba(250, 250, 250, 0.6);
+  --card-bg: var(--glass);
+
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Outfit', sans-serif;
+  --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --radius: 24px;
+  --radius-sm: 12px;
 
   --section-pad: 120px;
   --container: 1200px;
+}
+
+:root[data-theme="light"] {
+  --dark: #f0f0f0;
+  --dark-2: #e8e8e8;
+  --dark-3: #dedede;
+  --white: #1a1a1a;
+  --glass: rgba(0, 0, 0, 0.03);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --text-muted: rgba(26, 26, 26, 0.65);
 }
 
 /* ──────────── RESET ──────────── */
@@ -1926,4 +1938,95 @@ svg {
   .newsletter-card {
     padding: 32px;
   }
+}
+
+/* ──────────── THEME TOGGLE ──────────── */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.theme-btn {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+}
+
+.theme-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.1);
+}
+
+.theme-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.sun-icon {
+  display: none;
+}
+
+.moon-icon {
+  display: block;
+}
+
+:root[data-theme="light"] .sun-icon {
+  display: block;
+}
+
+:root[data-theme="light"] .moon-icon {
+  display: none;
+}
+
+/* ──────────── PORTFOLIO FILTERS ──────────── */
+.portfolio-filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 48px;
+}
+
+.filter-btn {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  color: var(--text-color);
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.filter-btn:hover {
+  border-color: var(--primary);
+  background: rgba(212, 84, 122, 0.05);
+}
+
+.filter-btn.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+  box-shadow: 0 4px 15px rgba(212, 84, 122, 0.3);
+}
+
+/* ──────────── MOSAIC UPDATES ──────────── */
+.mosaic-item {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.mosaic-item.hidden {
+  display: none !important;
 }

@@ -53,9 +53,29 @@
         <span class="logo-icon">✦</span>
         <span class="logo-text">Genesi<span class="logo-accent">Spa</span></span>
       </a>
-      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+      <div class="nav-actions">
+        <button id="themeToggle" class="theme-btn" aria-label="Cambiar tema">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </svg>
+        </button>
+        <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
       <ul class="nav-links" id="navLinks" role="list">
         <li><a href="#about">Nosotros</a></li>
         <li><a href="#services">Servicios</a></li>
@@ -392,45 +412,52 @@
         <h2 class="section-title gsap-fade">Nuestros <span class="text-gold">Trabajos</span></h2>
         <p class="section-subtitle gsap-fade">Una muestra de las transformaciones que realizamos cada día.</p>
       </div>
-      <div class="mosaic-grid">
+      <div class="portfolio-filters gsap-fade">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="cabello">Cabello</button>
+        <button class="filter-btn" data-filter="uñas">Uñas</button>
+        <button class="filter-btn" data-filter="makeup">Maquillaje</button>
+        <button class="filter-btn" data-filter="spa">Spa</button>
+      </div>
 
+      <div class="mosaic-grid">
         <!-- Cell 1 – FEATURE (2×2 tall) -->
-        <div class="mosaic-item gsap-mosaic-item">
+        <div class="mosaic-item gsap-mosaic-item" data-category="cabello">
           <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&q=80"
             alt="Estilista trabajando en coloración profesional" loading="lazy" />
           <div class="mosaic-overlay"><span class="mosaic-caption">Coloración Profesional</span></div>
         </div>
 
         <!-- Cell 2 -->
-        <div class="mosaic-item gsap-mosaic-item">
+        <div class="mosaic-item gsap-mosaic-item" data-category="cabello">
           <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=600&q=80"
             alt="Mechas y luces en cabello" loading="lazy" />
           <div class="mosaic-overlay"><span class="mosaic-caption">Mechas &amp; Luces</span></div>
         </div>
 
         <!-- Cell 3 -->
-        <div class="mosaic-item gsap-mosaic-item">
+        <div class="mosaic-item gsap-mosaic-item" data-category="uñas">
           <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&q=80" alt="Nail art moderno"
             loading="lazy" />
           <div class="mosaic-overlay"><span class="mosaic-caption">Nail Art</span></div>
         </div>
 
         <!-- Cell 4 – wide (span 2) -->
-        <div class="mosaic-item gsap-mosaic-item">
+        <div class="mosaic-item gsap-mosaic-item" data-category="makeup">
           <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=900&q=80"
             alt="Maquillaje artístico profesional" loading="lazy" />
           <div class="mosaic-overlay"><span class="mosaic-caption">Maquillaje Artístico</span></div>
         </div>
 
         <!-- Cell 5 -->
-        <div class="mosaic-item gsap-mosaic-item">
+        <div class="mosaic-item gsap-mosaic-item" data-category="spa">
           <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80"
             alt="Spa facial con productos premium" loading="lazy" />
           <div class="mosaic-overlay"><span class="mosaic-caption">Spa Facial</span></div>
         </div>
 
         <!-- Cell 6 -->
-        <div class="mosaic-item gsap-mosaic-item">
+        <div class="mosaic-item gsap-mosaic-item" data-category="cabello">
           <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80"
             alt="Peinado elegante para evento especial" loading="lazy" />
           <div class="mosaic-overlay"><span class="mosaic-caption">Peinado de Evento</span></div>
@@ -728,7 +755,7 @@
             </div>
             <div class="form-group">
               <label for="inputPhone">WhatsApp / Teléfono</label>
-              <input type="tel" id="inputPhone" name="phone" placeholder="Ej: +58 412 000 0000" autocomplete="tel"
+              <input type="tel" id="inputPhone" name="phone" placeholder="Ej: +51 929 756 344" autocomplete="tel"
                 required />
               <span class="form-error" id="phoneError"></span>
             </div>

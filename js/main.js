@@ -159,6 +159,53 @@
 
         document.fonts.ready.then(() => ScrollTrigger.refresh());
         window.addEventListener('load', () => ScrollTrigger.refresh());
+
+        /* ── Theme Toggle Logic ── */
+        const themeBtn = document.getElementById('themeToggle');
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+
+        if (themeBtn) {
+            themeBtn.addEventListener('click', () => {
+                const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', theme);
+                localStorage.setItem('theme', theme);
+                // Optional: Refresh some animations if needed
+            });
+        }
+
+        /* ── Portfolio Filter Logic ── */
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const mosaicItems = document.querySelectorAll('.mosaic-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filter = btn.dataset.filter;
+
+                // Update active state
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Animate items
+                gsap.to(mosaicItems, {
+                    opacity: 0,
+                    scale: 0.9,
+                    duration: 0.3,
+                    stagger: 0.02,
+                    onComplete: () => {
+                        mosaicItems.forEach(item => {
+                            if (filter === 'all' || item.dataset.category === filter) {
+                                item.classList.remove('hidden');
+                                gsap.to(item, { opacity: 1, scale: 1, duration: 0.4, delay: 0.1 });
+                            } else {
+                                item.classList.add('hidden');
+                            }
+                        });
+                        ScrollTrigger.refresh();
+                    }
+                });
+            });
+        });
     }
 
     /* ── Utilities ── */
