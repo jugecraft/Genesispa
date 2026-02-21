@@ -1,0 +1,310 @@
+/* =====================================================
+   GenesiSpa — animations.css
+   Keyframes · GSAP helper classes · Micro-interactions
+   ===================================================== */
+
+/* ──────────── KEYFRAMES ──────────── */
+
+@keyframes scrollPulse {
+
+    0%,
+    100% {
+        opacity: 0.6;
+        transform: scaleY(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scaleY(1.15);
+    }
+}
+
+@keyframes orbFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-20px) scale(1.04);
+    }
+}
+
+@keyframes tagFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes shimmerSlide {
+    0% {
+        left: -80%;
+    }
+
+    100% {
+        left: 160%;
+    }
+}
+
+@keyframes pricingFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes bubbleFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(-1deg);
+    }
+
+    50% {
+        transform: translateY(-6px) rotate(1deg);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(32px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes goldGlow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(201, 169, 110, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 0 40px rgba(201, 169, 110, 0.6);
+    }
+}
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    30% {
+        transform: scale(1.25);
+    }
+
+    60% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes rotateGlow {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* ──────────── GSAP INITIAL STATES ──────────── */
+/* Elements that will be animated by GSAP start hidden */
+
+.gsap-fade {
+    opacity: 0;
+    transform: translateY(24px);
+}
+
+.gsap-slide-left {
+    opacity: 0;
+    transform: translateX(-60px);
+}
+
+.gsap-slide-right {
+    opacity: 0;
+    transform: translateX(60px);
+}
+
+.gsap-card {
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.gsap-bubble {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.gsap-float-card {
+    opacity: 0;
+    transform: translateY(48px);
+}
+
+/* ──────────── ANIMATED STATES (applied by GSAP) ──────────── */
+
+.gsap-done {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+/* ──────────── PRICING FLOAT LOOP ──────────── */
+.pricing-card--float-loop {
+    animation: pricingFloat 4s ease-in-out infinite;
+}
+
+.pricing-card--float-loop:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.pricing-card--float-loop:nth-child(3) {
+    animation-delay: 1s;
+}
+
+/* ──────────── BUBBLE FLOAT LOOP ──────────── */
+.bubble-float-active {
+    animation: bubbleFloat 5s ease-in-out infinite;
+}
+
+.bubble-float-active:nth-child(2) {
+    animation-delay: 1.2s;
+}
+
+.bubble-float-active:nth-child(3) {
+    animation-delay: 2.4s;
+}
+
+.bubble-float-active:nth-child(4) {
+    animation-delay: 0.8s;
+}
+
+/* ──────────── GOLD GLOW LOOP (featured pricing card) ──────────── */
+.pricing-card--featured.gold-glow-active {
+    animation: goldGlow 3s ease-in-out infinite;
+}
+
+/* ──────────── HEART ANIMATION ──────────── */
+.heart {
+    display: inline-block;
+    animation: heartbeat 1.8s ease-in-out infinite;
+}
+
+/* ──────────── SOCIAL LINK HOVER RIPPLE ──────────── */
+.social-link {
+    position: relative;
+    overflow: hidden;
+}
+
+.social-link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    transform: scale(0);
+    transition: transform 0.35s;
+}
+
+.social-link:hover::after {
+    transform: scale(1);
+}
+
+/* ──────────── STAT NUMBER COUNTER ──────────── */
+.stat-num {
+    transition: color 0.3s;
+}
+
+.stat-num:hover {
+    color: var(--gold-light);
+}
+
+/* ──────────── NAVBAR LINK ACTIVE ──────────── */
+.nav-links a.active {
+    color: var(--gold) !important;
+}
+
+.nav-links a.active::after {
+    width: 100% !important;
+}
+
+/* ──────────── HERO PARTICLE CLASS ──────────── */
+.particle {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: fadeIn 1s ease forwards;
+}
+
+/* ──────────── SKIP TO CONTENT (accessibility) ──────────── */
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 16px;
+    background: var(--gold);
+    color: var(--dark);
+    padding: 12px 24px;
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    font-weight: 700;
+    z-index: 9999;
+    transition: top 0.25s;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* ──────────── LAZY LOAD FADE ──────────── */
+.lazy {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.lazy.loaded {
+    opacity: 1;
+}
+
+/* ──────────── FORM SUCCESS ANIMATION ──────────── */
+.form-success {
+    animation: fadeInUp 0.4s ease forwards;
+}
+
+/* ──────────── REDUCED MOTION ──────────── */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
