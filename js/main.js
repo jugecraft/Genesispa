@@ -10,31 +10,35 @@
        GSAP SETUP
        ══════════════════════════════════════ */
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-        /* ── Initializations ── */
-        // Initialize Lenis
-        const lenis = new Lenis({
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            orientation: 'vertical',
-            gestureOrientation: 'vertical',
-            smoothWheel: true,
-            wheelMultiplier: 1,
-            touchMultiplier: 2,
-            infinite: false,
-        });
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || window.innerWidth <= 1024;
+        let lenis = null;
 
-        // Sync Lenis with ScrollTrigger
-        lenis.on('scroll', ScrollTrigger.update);
+        if (!isTouchDevice && typeof Lenis !== 'undefined') {
+            /* ── Initialize Lenis (Desktop only) ── */
+            lenis = new Lenis({
+                duration: 1.2,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                orientation: 'vertical',
+                gestureOrientation: 'vertical',
+                smoothWheel: true,
+                wheelMultiplier: 1,
+                touchMultiplier: 2,
+                infinite: false,
+            });
 
-        gsap.ticker.add((time) => {
-            lenis.raf(time * 1000);
-        });
+            // Sync Lenis with ScrollTrigger
+            lenis.on('scroll', ScrollTrigger.update);
 
-        gsap.ticker.lagSmoothing(0);
+            gsap.ticker.add((time) => {
+                lenis.raf(time * 1000);
+            });
+
+            gsap.ticker.lagSmoothing(0);
+        }
 
         // Standard GSAP setup
         gsap.registerPlugin(ScrollTrigger);
-        initGSAP();
+        initGSAP(lenis);
     } else {
         document.querySelectorAll(
             '.gsap-fade, .gsap-slide-left, .gsap-slide-right, ' +
@@ -180,6 +184,48 @@
             x: 0, opacity: 1, duration: 0.85, ease: EASE, delay: 0.15,
         });
 
+        /* ── Navbar Hide/Show logic safely ── */
+        let lastScrollY = window.scrollY;
+        const nav = document.getElementById('navbar');
+        if (nav) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > lastScrollY && window.scrollY > 100) {
+                    nav.classList.add('hide');
+                } else {
+                    nav.classList.remove('hide');
+                }
+                lastScrollY = window.scrollY;
+            });
+        }
+
+        /* ── Mobile Menu ── */
+        const toggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        if (toggle && navLinks) {
+            toggle.addEventListener('click', () => {
+                const isOpen = navLinks.classList.toggle('active');
+                toggle.classList.toggle('active');
+
+                // If using Lenis, lock scroll when menu is open
+                if (lenis) {
+                    if (isOpen) lenis.stop();
+                    else lenis.start();
+                } else {
+                    document.body.style.overflow = isOpen ? 'hidden' : '';
+                }
+            });
+
+            // Close when clicking a link
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    toggle.classList.remove('active');
+                    if (lenis) lenis.start();
+                    else document.body.style.overflow = '';
+                });
+            });
+        }
+
         document.fonts.ready.then(() => ScrollTrigger.refresh());
         window.addEventListener('load', () => ScrollTrigger.refresh());
 
@@ -193,7 +239,6 @@
                 const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
                 document.documentElement.setAttribute('data-theme', theme);
                 localStorage.setItem('theme', theme);
-                // Optional: Refresh some animations if needed
             });
         }
 
