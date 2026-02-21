@@ -13,12 +13,12 @@
     content="Tu espacio de lujo accesible en Estado Vargas. Belleza, bienestar y glamour en un solo lugar." />
   <title>GenesiSpa – Salón de Belleza & Spa | Estado Vargas, Venezuela</title>
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap"
-    rel="stylesheet" />
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+    rel="stylesheet">
 
   <!-- CSS -->
   <link rel="stylesheet" href="css/main.css" />
@@ -26,6 +26,23 @@
 </head>
 
 <body>
+
+  <!-- ── Custom Luxury Cursor ── -->
+  <div id="customCursor" class="custom-cursor"></div>
+
+  <!-- ── Cinematic Splash Screen ── -->
+  <div id="splashScreen" class="splash-screen">
+    <div class="splash-content">
+      <div class="splash-logo">
+        <span class="logo-text">Genesi<span class="logo-accent">Spa</span></span>
+      </div>
+      <div class="splash-loader">
+        <div class="loader-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <a href="#hero" class="skip-to-content">Saltar al contenido</a>
 
   <!-- ═══════════════════════════════════════
        NAVBAR
@@ -526,6 +543,71 @@
   </section>
 
   <!-- ═══════════════════════════════════════
+       FAQ SECTION
+  ═══════════════════════════════════════ -->
+  <section class="faq section" id="faq" aria-label="Preguntas frecuentes">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow gsap-fade">Resolvemos tus dudas</p>
+        <h2 class="section-title gsap-fade">Preguntas <span class="text-gold">Frecuentes</span></h2>
+      </div>
+
+      <div class="faq-grid">
+        <div class="faq-item gsap-fade">
+          <button class="faq-question" aria-expanded="false">
+            <span>¿Con cuánto tiempo de antelación debo agendar?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none">
+              <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </button>
+          <div class="faq-answer">
+            <p>Recomendamos agendar con al menos 48 horas de antelación para asegurar disponibilidad. Para eventos
+              corporativos o novias, lo ideal es agendar con 1 o 2 meses de anticipación.</p>
+          </div>
+        </div>
+
+        <div class="faq-item gsap-fade">
+          <button class="faq-question" aria-expanded="false">
+            <span>¿Qué métodos de pago aceptan?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none">
+              <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </button>
+          <div class="faq-answer">
+            <p>Aceptamos Bolívares (Pago Móvil, Transferencia), Dólares en efectivo, Zelle y tarjetas internacionales
+              mediante pasarela de pago.</p>
+          </div>
+        </div>
+
+        <div class="faq-item gsap-fade">
+          <button class="faq-question" aria-expanded="false">
+            <span>¿Realizan servicios a domicilio?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none">
+              <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </button>
+          <div class="faq-answer">
+            <p>Sí, ofrecemos atención premium a domicilio exclusivamente para paquetes de Novias y Eventos Especiales en
+              todo el Estado Vargas y Caracas.</p>
+          </div>
+        </div>
+
+        <div class="faq-item gsap-fade">
+          <button class="faq-question" aria-expanded="false">
+            <span>¿Cómo puedo cancelar o reprogramar mi cita?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none">
+              <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </button>
+          <div class="faq-answer">
+            <p>Puedes hacerlo vía WhatsApp con al menos 24 horas de antelación sin ningún cargo extra.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
        TESTIMONIALS SECTION
   ═══════════════════════════════════════ -->
   <section class="testimonials section" id="testimonials" aria-label="Testimonios de clientes">
@@ -616,7 +698,7 @@
                 <path
                   d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 11a19.80 19.80 0 01-3.07-8.67A2 2 0 013.6 2.18h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.91 9a16 16 0 006.09 6.09l.91-.91a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
               </svg>
-              <span>+58 412 000 0000</span>
+              <span>+51 929 756 344</span>
             </div>
             <div class="contact-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22">
@@ -626,7 +708,7 @@
               <span>genesis@genesispa.com</span>
             </div>
           </div>
-          <a href="https://wa.me/584120000000?text=Hola%20Genesis%2C%20quiero%20agendar%20una%20cita%20en%20GenesiSpa%20%F0%9F%92%85"
+          <a href="https://wa.me/51929756344?text=Hola%20Genesis%2C%20quiero%20agendar%20una%20cita%20en%20GenesiSpa%20%F0%9F%92%85"
             target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" id="whatsappBtn">
             <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
               <path
@@ -694,6 +776,44 @@
   </section>
 
   <!-- ═══════════════════════════════════════
+       NEWSLETTER & LOCATION
+  ═══════════════════════════════════════ -->
+  <section class="location-news section" id="location">
+    <div class="container">
+      <div class="loc-news-grid">
+        <!-- Newsletter -->
+        <div class="newsletter-card gsap-fade">
+          <h3 class="card-title">GenesiSpa Insider</h3>
+          <p class="card-desc">Suscríbete para recibir ofertas exclusivas, tips de belleza y noticias del salón.</p>
+          <form class="newsletter-form" id="newsletterForm">
+            <input type="email" placeholder="Tu correo electrónico" required aria-label="Correo electrónico">
+            <button type="submit" class="btn btn-primary">Unirme</button>
+          </form>
+          <p class="form-status" id="newsStatus"></p>
+        </div>
+
+        <!-- Location/Map Placeholder -->
+        <div class="location-card gsap-fade">
+          <div class="map-wrap">
+            <div class="map-overlay">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+              </svg>
+              <h4>Visítanos</h4>
+              <p>Av. Principal, Edif. Luxury Center, Estado Vargas.</p>
+              <a href="https://maps.google.com" target="_blank" class="btn btn-ghost btn-sm">Cómo llegar</a>
+            </div>
+            <div class="map-blur-bg"
+              style="background-image: url('https://images.unsplash.com/photo-1524813636402-235882236940?w=800&q=80');">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
        FOOTER
   ═══════════════════════════════════════ -->
   <footer class="footer" aria-label="Pie de página">
@@ -718,7 +838,7 @@
                 <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
               </svg>
             </a>
-            <a href="https://wa.me/584120000000" class="social-link social-wa" aria-label="WhatsApp de GenesiSpa"
+            <a href="https://wa.me/51929756344" class="social-link social-wa" aria-label="WhatsApp de GenesiSpa"
               role="listitem">
               <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
                 <path

@@ -99,7 +99,7 @@
     });
 
     /* ── WhatsApp Helpers ── */
-    const WA_NUMBER = '584120000000';   // Change to real number
+    const WA_NUMBER = '51929756344';   // Change to real number
 
     const SERVICE_LABELS = {
         'corte': 'Corte de cabello',
